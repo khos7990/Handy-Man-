@@ -1,5 +1,60 @@
 .container {
-  background-image: url(../../../../public/home.jpg);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
+    url(../../../../public/home.jpg);
   height: 100vh;
   width: 100vw;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dataContainer {
+  border: 2px solid red;
+  height: 50vh;
+  width: 60vw;
+  position: relative;
+}
+
+.titleContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.title {
+  font-size: 50px;
+  color: orange;
+  font-style: italic;
+  font-weight: bold;
+  margin-right: 20px;
+}
+
+.hammerIcon {
+  height: 50px;
+  width: 50px;
+}
+
+.buttonContainer {
+  align-items: center;
+  height: 80%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+}
+
+.buttonLook {
+  height: 100%;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttonPost {
+  height: 100%;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
