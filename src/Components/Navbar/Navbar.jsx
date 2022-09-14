@@ -4,7 +4,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 
 export default function Navbar() {
   return (
-    <AppBar position="static">
+    <AppBar color="secondary" position="static">
       <Toolbar variant="dense">
         <IconButton
           edge="start"

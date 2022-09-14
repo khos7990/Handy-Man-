@@ -11,7 +11,7 @@ export default class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <Navbar />
+        {/* <Navbar /> */}
         <Routes>
           <Route index element={<Home />} />
           <Route path="search" element={<Search />} />
