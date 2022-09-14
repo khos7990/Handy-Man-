@@ -11,6 +11,7 @@ import {
   MenuItem,
   InputLabel,
   Button,
+  CardHeader,
 } from "@mui/material";
 
 export default class Post extends Component {
@@ -33,6 +34,7 @@ export default class Post extends Component {
               backgroundColor: "transparent",
             }}
           >
+            <CardHeader title="Personal Information" />
             <CardContent
               sx={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}
             >
@@ -53,8 +55,22 @@ export default class Post extends Component {
                 <MenuItem value={"Quick-Fix"}>Quick-Fix</MenuItem>
                 <MenuItem value={"HVAC"}>HVAC</MenuItem>
               </Select>
+            </CardContent>
+          </Card>
+          <Card
+            sx={{
+              width: 600,
+              backgroundColor: "transparent",
+            }}
+          >
+            <CardHeader title="Location" />
+            <CardContent>
+              <TextField sx={{ margin: 3 }} label="Country" />
+              <TextField sx={{ margin: 3 }} label="Province/State" />
+              <TextField sx={{ margin: 3 }} label="City" />
+              <TextField sx={{ margin: 3 }} label="Postal Code" />
               <div className="createBtn">
-                <Button sx={{ mt: 5 }} variant="outlined">
+                <Button sx={{ mt: 5 }} variant="contained">
                   Create Post
                 </Button>
               </div>
