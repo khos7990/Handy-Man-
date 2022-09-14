@@ -1,6 +1,6 @@
 import React from "react";
 import "./Post.css";
-
+import { Link } from "react-router-dom";
 import { Component } from "react";
 import {
   Card,
@@ -25,13 +25,21 @@ export default class Post extends Component {
   render() {
     return (
       <div className="postContainer">
-        <Typography variant="h2">Post a Job</Typography>
+        <div className="post-backBtn">
+          <Link style={{ textDecoration: "none" }} to="/">
+            {" "}
+            <Button color="secondary" size="large" variant="contained">
+              Go Back
+            </Button>
+          </Link>
+        </div>
+
         <div className="postForm">
           <Card
             sx={{
-              border: "2px solid black",
               width: 600,
               backgroundColor: "transparent",
+              boxShadow: "0px 0px 1px 1px #000000",
             }}
           >
             <CardHeader title="Personal Information" />
@@ -61,6 +69,7 @@ export default class Post extends Component {
             sx={{
               width: 600,
               backgroundColor: "transparent",
+              boxShadow: "0px 0px 1px 1px #000000",
             }}
           >
             <CardHeader title="Location" />

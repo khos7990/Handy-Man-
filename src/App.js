@@ -5,11 +5,13 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Search from "./Components/Pages/Search/Search";
 import Post from "./Components/Pages/Post/Post";
 import Home from "./Components/Pages/Home/Home";
+import Navbar from "./Components/Navbar/Navbar";
 
 export default class App extends Component {
   render() {
     return (
       <BrowserRouter>
+        <Navbar />
         <Routes>
           <Route index element={<Home />} />
           <Route path="search" element={<Search />} />

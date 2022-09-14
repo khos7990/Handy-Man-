@@ -7,6 +7,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-sizing: border-box;
+}
+
+.post-backBtn {
+  left: 30px;
+  top: 60px;
+  position: absolute;
 }
 
 .createBtn {
