@@ -16,12 +16,39 @@ import {
 
 export default class Post extends Component {
   state = {
-    industry: "",
+    JobPost: {
+      industry: "",
+      firstname: "",
+      lastname: "",
+      contactnumber: "",
+      email: "",
+      country: "",
+      province: "",
+      city: "",
+      postalcode: "",
+    },
   };
 
   handleChange = (e) => {
-    this.setState({ industry: e.target.value });
+    let JobPostcopy = this.state.JobPost;
+    JobPostcopy[e.target.name] = e.target.value;
+
+    this.setState({ JobPost: JobPostcopy });
   };
+
+  onClick = async () => {
+    try {
+      let options = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ JobPost: this.state.JobPost }),
+      };
+      let fetchResponse = await fetch("/api", options);
+    } catch (err) {
+      console.log("Error: ", err);
+    }
+  };
+
   render() {
     return (
       <div className="postContainer">
@@ -46,16 +73,36 @@ export default class Post extends Component {
             <CardContent
               sx={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}
             >
-              <TextField sx={{ margin: 3 }} label="First Name" />
-              <TextField sx={{ margin: 3 }} label="Last Name" />
-              <TextField sx={{ margin: 3 }} label="Contact Number" />
-              <TextField sx={{ margin: 3 }} label="Email" />
+              <TextField
+                name="firstname"
+                onChange={this.handleChange}
+                sx={{ margin: 3 }}
+                label="First Name"
+              />
+              <TextField
+                name="lastname"
+                onChange={this.handleChange}
+                sx={{ margin: 3 }}
+                label="Last Name"
+              />
+              <TextField
+                name="contactnumber"
+                onChange={this.handleChange}
+                sx={{ margin: 3 }}
+                label="Contact Number"
+              />
+              <TextField
+                name="email"
+                onChange={this.handleChange}
+                sx={{ margin: 3 }}
+                label="Email"
+              />
 
               <InputLabel>Industry</InputLabel>
               <Select
                 sx={{ width: 400 }}
                 onChange={this.handleChange}
-                value={this.state.industry}
+                name={"industry"}
               >
                 <MenuItem value={"Plumbing"}>Plumbing</MenuItem>
                 <MenuItem value={"Renovations"}>Renovations</MenuItem>
@@ -74,12 +121,36 @@ export default class Post extends Component {
           >
             <CardHeader title="Location" />
             <CardContent>
-              <TextField sx={{ margin: 3 }} label="Country" />
-              <TextField sx={{ margin: 3 }} label="Province/State" />
-              <TextField sx={{ margin: 3 }} label="City" />
-              <TextField sx={{ margin: 3 }} label="Postal Code" />
+              <TextField
+                name="country"
+                onChange={this.handleChange}
+                sx={{ margin: 3 }}
+                label="Country"
+              />
+              <TextField
+                name="province"
+                onChange={this.handleChange}
+                sx={{ margin: 3 }}
+                label="Province/State"
+              />
+              <TextField
+                name="city"
+                onChange={this.handleChange}
+                sx={{ margin: 3 }}
+                label="City"
+              />
+              <TextField
+                name="postalcode"
+                onChange={this.handleChange}
+                sx={{ margin: 3 }}
+                label="Postal Code"
+              />
               <div className="createBtn">
-                <Button sx={{ mt: 5 }} variant="contained">
+                <Button
+                  onClick={this.onClick}
+                  sx={{ mt: 5 }}
+                  variant="contained"
+                >
                   Create Post
                 </Button>
               </div>

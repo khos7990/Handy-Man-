@@ -11,5 +11,11 @@ async function index(req, res) {
 }
 
 async function create(req, res) {
-  console.log(req.body);
+  try {
+    console.log(req.body);
+    await Post.create({ Post: req.body.JobPost });
+    res.status(200).json("ok. Created.");
+  } catch (err) {
+    res.status(500).json(err);
+  }
 }
