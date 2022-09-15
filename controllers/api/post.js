@@ -12,10 +12,19 @@ async function index(req, res) {
 
 async function create(req, res) {
   try {
-    console.log(req.body);
-    await Post.create({ Post: req.body.JobPost });
+    console.log(req.body.JobPost);
+    await Post.create({
+      firstName: req.body.JobPost.firstName,
+      lastName: req.body.JobPost.lastName,
+      contactNum: req.body.JobPost.contactNum,
+      email: req.body.JobPost.email,
+      industry: req.body.JobPost.industry,
+      country: req.body.JobPost.country,
+      province: req.body.JobPost.province,
+      city: req.body.JobPost.city,
+    });
     res.status(200).json("ok. Created.");
   } catch (err) {
-    res.status(500).json(err);
+    console.log(err.message);
   }
 }

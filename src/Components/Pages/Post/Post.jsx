@@ -18,14 +18,13 @@ export default class Post extends Component {
   state = {
     JobPost: {
       industry: "",
-      firstname: "",
-      lastname: "",
-      contactnumber: "",
+      firstName: "",
+      lastName: "",
+      contactNum: "",
       email: "",
       country: "",
       province: "",
       city: "",
-      postalcode: "",
     },
   };
 
@@ -74,19 +73,19 @@ export default class Post extends Component {
               sx={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}
             >
               <TextField
-                name="firstname"
+                name="firstName"
                 onChange={this.handleChange}
                 sx={{ margin: 3 }}
                 label="First Name"
               />
               <TextField
-                name="lastname"
+                name="lastName"
                 onChange={this.handleChange}
                 sx={{ margin: 3 }}
                 label="Last Name"
               />
               <TextField
-                name="contactnumber"
+                name="contactNum"
                 onChange={this.handleChange}
                 sx={{ margin: 3 }}
                 label="Contact Number"
