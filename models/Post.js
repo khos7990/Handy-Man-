@@ -7,10 +7,11 @@ const postSchema = new Schema(
     lastName: { type: String, required: true },
     contactNum: { type: Number, required: true },
     email: { type: String, required: true },
-    industry: { type: String, required: true },
+    industry: { type: Array, required: true },
     country: { type: String, required: true },
     province: { type: String, required: true },
     city: { type: String, required: true },
+    details: { type: String },
   },
   {
     timestamps: true,

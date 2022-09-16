@@ -16,6 +16,12 @@
   position: absolute;
 }
 
+.industrySelect {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
 .createBtn {
   width: 30vw;
   display: flex;

@@ -1,3 +1,4 @@
+import { Card, CardContent, CardHeader } from "@mui/material";
 import React, { Component } from "react";
 import "./Search.css";
 
@@ -17,6 +18,15 @@ export default class Search extends Component {
   }
 
   render() {
-    return <div className="containerSearch">Search</div>;
+    return (
+      <div className="containerSearch">
+        Search
+        <Card>
+          <CardHeader title="" />
+
+          <CardContent></CardContent>
+        </Card>
+      </div>
+    );
   }
 }

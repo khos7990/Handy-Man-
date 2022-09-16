@@ -17,7 +17,7 @@ import {
 export default class Post extends Component {
   state = {
     JobPost: {
-      industry: "",
+      industry: [],
       firstName: "",
       lastName: "",
       contactNum: "",
@@ -25,6 +25,7 @@ export default class Post extends Component {
       country: "",
       province: "",
       city: "",
+      details: "",
     },
     successMessage: "",
   };
@@ -104,19 +105,33 @@ export default class Post extends Component {
                 sx={{ margin: 3 }}
                 label="Email"
               />
+              <div className="industrySelect">
+                <InputLabel>Industry</InputLabel>
+                <Select
+                  sx={{ width: 400 }}
+                  multiple
+                  onChange={this.handleChange}
+                  name={"industry"}
+                  value={this.state.JobPost.industry}
+                  native={false}
+                  renderValue={(value) => {
+                    if (value.length === 0) {
+                      return "Industry";
+                    }
 
-              <InputLabel>Industry</InputLabel>
-              <Select
-                sx={{ width: 400 }}
-                onChange={this.handleChange}
-                name={"industry"}
-              >
-                <MenuItem value={"Plumbing"}>Plumbing</MenuItem>
-                <MenuItem value={"Renovations"}>Renovations</MenuItem>
-                <MenuItem value={"Roofing"}>Roofing</MenuItem>
-                <MenuItem value={"Quick-Fix"}>Quick-Fix</MenuItem>
-                <MenuItem value={"HVAC"}>HVAC</MenuItem>
-              </Select>
+                    return value.join(", ");
+                  }}
+                >
+                  <MenuItem disabled value="">
+                    <em>Industry</em>
+                  </MenuItem>
+                  <MenuItem value={"Plumbing"}>Plumbing</MenuItem>
+                  <MenuItem value={"Renovations"}>Renovations</MenuItem>
+                  <MenuItem value={"Roofing"}>Roofing</MenuItem>
+                  <MenuItem value={"Quick-Fix"}>Quick-Fix</MenuItem>
+                  <MenuItem value={"HVAC"}>HVAC</MenuItem>
+                </Select>
+              </div>
             </CardContent>
           </Card>
           <Card
@@ -151,6 +166,14 @@ export default class Post extends Component {
                 onChange={this.handleChange}
                 sx={{ margin: 3 }}
                 label="Postal Code"
+              />
+              <TextField
+                name="details"
+                onChange={this.handleChange}
+                sx={{ width: "100%" }}
+                minRows={3}
+                multiline={true}
+                label="Details"
               />
               {this.state.successMessage ? (
                 <div className="successMessage">
