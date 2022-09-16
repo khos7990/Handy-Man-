@@ -26,6 +26,7 @@ export default class Post extends Component {
       province: "",
       city: "",
     },
+    successMessage: "",
   };
 
   handleChange = (e) => {
@@ -43,6 +44,13 @@ export default class Post extends Component {
         body: JSON.stringify({ JobPost: this.state.JobPost }),
       };
       let fetchResponse = await fetch("/api", options);
+      if (fetchResponse.status === 200) {
+        this.setState({
+          successMessage: "Your Job Has Been Posted. Thank you!",
+        });
+      }
+      let serverResponse = await fetchResponse.json();
+      console.log(serverResponse);
     } catch (err) {
       console.log("Error: ", err);
     }
@@ -144,6 +152,11 @@ export default class Post extends Component {
                 sx={{ margin: 3 }}
                 label="Postal Code"
               />
+              {this.state.successMessage ? (
+                <div className="successMessage">
+                  {this.state.successMessage}{" "}
+                </div>
+              ) : null}
               <div className="createBtn">
                 <Button
                   onClick={this.onClick}

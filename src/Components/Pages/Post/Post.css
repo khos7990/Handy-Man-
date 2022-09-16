@@ -21,3 +21,8 @@
   display: flex;
   justify-content: center;
 }
+
+.successMessage {
+  color: green;
+  text-align: center;
+}
