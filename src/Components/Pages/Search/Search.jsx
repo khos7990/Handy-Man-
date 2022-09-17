@@ -1,4 +1,4 @@
-import { Card, CardContent, CardHeader } from "@mui/material";
+import { Card, CardContent, CardHeader, colors } from "@mui/material";
 import React, { Component } from "react";
 import "./Search.css";
 
@@ -21,8 +21,15 @@ export default class Search extends Component {
     return (
       <div className="containerSearch">
         Search
-        <Card>
-          <CardHeader title="" />
+        <Card
+          sx={{
+            width: 300,
+            height: 300,
+            backgroundColor: "#ff7eb9",
+            border: "2px solid white",
+          }}
+        >
+          <CardHeader title="Test" />
 
           <CardContent></CardContent>
         </Card>
