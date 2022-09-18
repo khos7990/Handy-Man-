@@ -6,18 +6,14 @@ export default class Search extends Component {
   state = {
     posts: [],
     stickyNoteColor: "",
+    stickyNoteColors: ["#ff7eb9", "#ff65a3", "#7afcff", "#feff9c", "#fff740"],
+    index: 0,
   };
 
+  //
   changeStickyColor = () => {
-    let stickyNoteColors = [
-      "#ff7eb9",
-      "#ff65a3",
-      "#7afcff",
-      "#feff9c",
-      "#fff740",
-    ];
     let index = Math.floor(Math.random() * 5);
-    this.setState({ stickyNoteColor: stickyNoteColors[index] });
+    this.setState({ index });
   };
 
   getJobs = async () => {
@@ -41,7 +37,7 @@ export default class Search extends Component {
               sx={{
                 width: 300,
                 height: 300,
-                backgroundColor: this.state.stickyNoteColor,
+                backgroundColor: this.state.stickyNoteColors[this.state.index],
                 border: "2px solid white",
               }}
             >

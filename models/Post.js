@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const StickyNoteColor = require("./StickyNoteColor");
 const Schema = mongoose.Schema;
 
 const postSchema = new Schema(
@@ -12,11 +13,11 @@ const postSchema = new Schema(
     province: { type: String, required: true },
     city: { type: String, required: true },
     details: { type: String },
+    color: { type: mongoose.Schema.Types.ObjectId, ref: "StickyNoteColor" },
   },
   {
     timestamps: true,
   }
 );
 
-const Post = mongoose.model("post", postSchema);
-module.exports = Post;
+module.exports = mongoose.model("post", postSchema);
