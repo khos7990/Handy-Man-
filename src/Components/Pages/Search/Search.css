@@ -6,3 +6,10 @@
   height: 100vh;
   width: 100vw;
 }
+
+.cardContainerSearch {
+  border: 2px solid black;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}

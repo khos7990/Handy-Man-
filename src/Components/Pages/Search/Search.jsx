@@ -5,6 +5,19 @@ import "./Search.css";
 export default class Search extends Component {
   state = {
     posts: [],
+    stickyNoteColor: "",
+  };
+
+  changeStickyColor = () => {
+    let stickyNoteColors = [
+      "#ff7eb9",
+      "#ff65a3",
+      "#7afcff",
+      "#feff9c",
+      "#fff740",
+    ];
+    let index = Math.floor(Math.random() * 5);
+    this.setState({ stickyNoteColor: stickyNoteColors[index] });
   };
 
   getJobs = async () => {
@@ -15,24 +28,31 @@ export default class Search extends Component {
 
   componentDidMount() {
     this.getJobs();
+    this.changeStickyColor();
   }
 
   render() {
     return (
       <div className="containerSearch">
         Search
-        <Card
-          sx={{
-            width: 300,
-            height: 300,
-            backgroundColor: "#ff7eb9",
-            border: "2px solid white",
-          }}
-        >
-          <CardHeader title="Test" />
+        <div className="cardContainerSearch">
+          {this.state.posts.map((post) => (
+            <Card
+              sx={{
+                width: 300,
+                height: 300,
+                backgroundColor: this.state.stickyNoteColor,
+                border: "2px solid white",
+              }}
+            >
+              <CardHeader title={post.firstName + " " + post.lastName} />
 
-          <CardContent></CardContent>
-        </Card>
+              <CardContent>
+                <p> Contact #: {post.contactNum} </p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
       </div>
     );
   }
