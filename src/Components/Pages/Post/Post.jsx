@@ -26,6 +26,7 @@ export default class Post extends Component {
       province: "",
       city: "",
       details: "",
+      color: 0,
     },
     successMessage: "",
   };
@@ -33,7 +34,8 @@ export default class Post extends Component {
   handleChange = (e) => {
     let JobPostcopy = this.state.JobPost;
     JobPostcopy[e.target.name] = e.target.value;
-
+    let index = Math.floor(Math.random() * 5);
+    JobPostcopy["color"] = index;
     this.setState({ JobPost: JobPostcopy });
   };
 
@@ -48,6 +50,7 @@ export default class Post extends Component {
       if (fetchResponse.status === 200) {
         this.setState({
           successMessage: "Your Job Has Been Posted. Thank you!",
+          JobPost: { industry: [] },
         });
       }
       let serverResponse = await fetchResponse.json();

@@ -24,7 +24,6 @@ export default class Search extends Component {
 
   componentDidMount() {
     this.getJobs();
-    this.changeStickyColor();
   }
 
   render() {
@@ -37,8 +36,8 @@ export default class Search extends Component {
               sx={{
                 width: 300,
                 height: 300,
-                backgroundColor: this.state.stickyNoteColors[this.state.index],
                 border: "2px solid white",
+                backgroundColor: this.state.stickyNoteColors[post.color],
               }}
             >
               <CardHeader title={post.firstName + " " + post.lastName} />

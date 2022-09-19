@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const StickyNoteColor = require("./StickyNoteColor");
 const Schema = mongoose.Schema;
 
 const postSchema = new Schema(
@@ -13,7 +12,7 @@ const postSchema = new Schema(
     province: { type: String, required: true },
     city: { type: String, required: true },
     details: { type: String },
-    color: { type: mongoose.Schema.Types.ObjectId, ref: "StickyNoteColor" },
+    color: { type: Number },
   },
   {
     timestamps: true,
