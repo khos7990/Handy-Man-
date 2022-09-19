@@ -7,6 +7,12 @@
   width: 100vw;
 }
 
+.search-backBtn {
+  left: 5px;
+  top: 60px;
+  position: absolute;
+}
+
 .cardContainerSearch {
   border: 2px solid black;
   display: flex;

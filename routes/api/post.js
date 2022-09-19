@@ -6,4 +6,6 @@ router.get("/", postCtrl.index);
 
 router.post("/", postCtrl.create);
 
+router.delete("/:id", postCtrl.delete);
+
 module.exports = router;

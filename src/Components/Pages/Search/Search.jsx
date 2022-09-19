@@ -1,5 +1,14 @@
-import { Card, CardContent, CardHeader, colors } from "@mui/material";
-import React, { Component } from "react";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  Button,
+  IconButton,
+} from "@mui/material";
+import RemoveIcon from "@mui/icons-material/Remove";
+
+import { Component } from "react";
+import { Link } from "react-router-dom";
 import "./Search.css";
 
 export default class Search extends Component {
@@ -26,10 +35,34 @@ export default class Search extends Component {
     this.getJobs();
   }
 
+  componentDidUpdate() {
+    this.getJobs();
+  }
+
+  onClick = async (e, id) => {
+    try {
+      let options = {
+        method: "DELETE",
+      };
+      let fetchResponse = await fetch("/api/" + id, options);
+      let serverResponse = await fetchResponse.json();
+      console.log(serverResponse);
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+
   render() {
     return (
       <div className="containerSearch">
-        Search
+        <div className="search-backBtn">
+          <Link style={{ textDecoration: "none" }} to="/">
+            {" "}
+            <Button color="secondary" size="large" variant="contained">
+              Go Back
+            </Button>
+          </Link>
+        </div>
         <div className="cardContainerSearch">
           {this.state.posts.map((post) => (
             <Card
@@ -40,7 +73,19 @@ export default class Search extends Component {
                 backgroundColor: this.state.stickyNoteColors[post.color],
               }}
             >
-              <CardHeader title={post.firstName + " " + post.lastName} />
+              <CardHeader
+                action={
+                  <IconButton
+                    color="primary"
+                    aria-label="remove"
+                    component="label"
+                    onClick={(e) => this.onClick(e, post._id)}
+                  >
+                    <RemoveIcon />
+                  </IconButton>
+                }
+                title={post.firstName + " " + post.lastName}
+              />
 
               <CardContent>
                 <p> Contact #: {post.contactNum} </p>
